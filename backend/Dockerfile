@@ -1,6 +1,6 @@
 #FROM Ubuntu
 #FROM python:alpine3.7
-FROM python:3.7
+FROM python:3.12
 
 ENV PYTHONUNBUFFERED 1
 

@@ -8,7 +8,7 @@ import {Blog} from "../models/blog";
   styleUrls: []
 })
 export class AddBlogComponent implements OnInit {
-  @Input() public blog: Blog;
+  @Input() public blog: Blog | undefined;
   @Input() public edit:boolean = false;
 
   public processing: boolean = false;
@@ -29,7 +29,7 @@ export class AddBlogComponent implements OnInit {
     console.log('submitting blog: ' + JSON.stringify(this.blog));
 
     if(this.edit == false){
-      this.blogService.addBlog(this.blog).subscribe(
+      this.blogService.addBlog(this.blog!).subscribe(
       // response => console.log('response on new post: ' + JSON.stringify(response))
       response => {
         // Handle each observable response
@@ -46,7 +46,7 @@ export class AddBlogComponent implements OnInit {
       }
     );
     } else {
-      this.blogService.editBlog(this.blog.id, this.blog).subscribe(
+      this.blogService.editBlog(this.blog!.id!, this.blog!).subscribe(
       // response => console.log('response on new post: ' + JSON.stringify(response))
       response => {
         // Handle each observable response

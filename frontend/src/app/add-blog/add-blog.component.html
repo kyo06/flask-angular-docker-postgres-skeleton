@@ -5,19 +5,14 @@
       <div class="control-group">
         <div class="form-group">
           <label>Title</label>
-          <input type="text" [(ngModel)]="blog.title" [disabled]="processing" name="title" class="form-control"
-            placeholder="Title">
         </div>
       </div>
       <div class="control-group">
         <div class="form-group">
           <label>Description</label>
-          <textarea rows="5" [(ngModel)]="blog.description" [disabled]="processing" name="content" class="form-control"
-            placeholder="Content"></textarea>
         </div>
       </div>
       <br>
-      <app-loading *ngIf="processing && (!success && !failure)"></app-loading>
       <div class="alert alert-success pointer" *ngIf="success" routerLink="/home" role="alert">
         You're entry was successfully posted! Click here to go Home.
       </div>

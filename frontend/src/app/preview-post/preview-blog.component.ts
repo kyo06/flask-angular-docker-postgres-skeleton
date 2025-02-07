@@ -9,7 +9,7 @@ import {BlogService} from "../service/blog.service";
   styleUrls: []
 })
 export class PreviewBlogComponent implements OnInit {
-  @Input() blog: Blog;
+  @Input() blog: Blog | undefined;
 
   @Output() deleteEvent = new EventEmitter();
 
@@ -18,12 +18,12 @@ export class PreviewBlogComponent implements OnInit {
   ngOnInit() {}
 
   public navigate(): void {
-    this.router.navigateByUrl('/blogs/' + this.blog.id);
+    this.router.navigateByUrl('/blogs/' + this.blog!.id!.toString());
   }
 
   public deleteBlog() {
-    this.blogService.deleteBlog(this.blog.id).subscribe(res => {
-      console.log('Deleted Blog' + this.blog.id);
+    this.blogService.deleteBlog(this.blog!.id!.toString()).subscribe(res => {
+      console.log('Deleted Blog' + this.blog!.id!.toString());
       this.deleteEvent.emit(this.blog);
     });
   }

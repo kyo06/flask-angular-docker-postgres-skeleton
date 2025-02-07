@@ -1,4 +1,4 @@
-FROM nginx:1.13.7
+FROM nginx:1.25.3
 
 # Copy custom nginx config
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf

@@ -11,7 +11,7 @@ import {Blog} from "../models/blog";
 })
 export class ViewBlogComponent implements OnInit {
   loading: boolean = true;
-  blog: Blog;
+  blog: Blog | undefined;
   editable: boolean = false;
 
   constructor(
@@ -27,7 +27,7 @@ export class ViewBlogComponent implements OnInit {
 
   public deleteBlog() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.blogService.deleteBlog(id).subscribe(res => {
+    this.blogService.deleteBlog(id!).subscribe(res => {
       console.log('Deleted Blog' + id);
       this.router.navigate(['/home']);
     });
@@ -41,7 +41,7 @@ export class ViewBlogComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     console.log('id: ' + id);
 
-    this.blogService.getBlog(id).subscribe(blog => {
+    this.blogService.getBlog(id!).subscribe(blog => {
       console.log('blog: ' + JSON.stringify(blog));
       this.blog = blog;
       this.loading = false;

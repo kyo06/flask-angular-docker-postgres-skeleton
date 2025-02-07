@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: []
 })
 export class FooterComponent implements OnInit {
-  year: string;
+  public year: string = '';
 
   constructor() {}
 

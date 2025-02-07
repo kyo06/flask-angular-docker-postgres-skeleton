@@ -14,7 +14,7 @@ export class BlogService {
   public getBlogs(): Observable<Blog[]> {
     return this.apiService.get(environment.api.entries).pipe(
       map(json => {
-        return json.map(post => new Blog(post));
+        return json.map((post: any) => new Blog(post));
       })
     );
   }
@@ -39,7 +39,7 @@ export class BlogService {
     return this.apiService.put(environment.api.entries + '/' + id, blog);
   }
 
-  public deleteBlog(id) {
+  public deleteBlog(id: string) {
     return this.apiService.delete(environment.api.entries + '/' + id);
   }
 }
